@@ -1,11 +1,17 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const path = require('path')
 
 app = express();
 
-app.get('/api/timestamp/', (req, res) => {
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/views/index.html')
+})
+
+app.get('/api/timestamp', (req, res) => {
     let date = new Date()
     res.json({'unix' : date.getTime(), 'utc' : date.toUTCString()})
+    console.log(date)
 })
 
 app.get('/api/timestamp/:date_string?', (req, res) => {
