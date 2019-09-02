@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
 app.get('/api/timestamp', (req, res) => {
     let date = new Date()
     res.json({'unix' : date.getTime(), 'utc' : date.toUTCString()})
+    console.log(date)
 })
 
 app.get('/api/timestamp/:date_string?', (req, res) => {
