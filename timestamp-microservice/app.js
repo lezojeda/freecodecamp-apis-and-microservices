@@ -3,13 +3,18 @@ const bodyParser = require('body-parser')
 
 app = express();
 
-app.get("/api/timestamp/:date_string?", (req, res) => {
+app.get('/api/timestamp/', (req, res) => {
+    let date = new Date()
+    res.json({'unix' : date.getTime(), 'utc' : date.toUTCString()})
+})
+
+app.get('/api/timestamp/:date_string?', (req, res) => {
     let timestamp = Date.parse(req.params.date_string)
     if(!isNaN(timestamp)) {
-        let date = new Date(timestamp)
-        res.json({'utc' : date.toUTCString()})
+        let date = new Date(req.params.date_string)
+        res.json({'unix' : date.getTime(), 'utc' : date.toUTCString()})
     } else {
-        res.send("Invalid date")
+        res.json({'error' : 'Invalid Date'})
     }
 })
 
