@@ -1,0 +1,21 @@
+{
+  "name": "timestamp-microservice",
+  "version": "1.0.0",
+  "description": "Timestamp microservice, project for the FreeCodeCamp \"Apis and microservices\" section of the curriculum",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "apis",
+    "microservices",
+    "node",
+    "express"
+  ],
+  "author": "Lucas Ezequiel Ojeda",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  }
+}
