@@ -3,6 +3,12 @@ const bodyParser = require('body-parser')
 
 app = express();
 
+// Serve static assets please and get me that sweet CSS
+
+app.use(express.static(__dirname + '/public'))
+
+// Home route handler
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 })
@@ -36,6 +42,8 @@ app.get('/api/whoami', (req, res) => {
            "software": userSystemInfo})
 })
 
-const PORT = 5500
+// URL shortener
+
+const PORT = 5000
 
 app.listen(PORT, ()=> console.log(`Server running at ${PORT}`));
