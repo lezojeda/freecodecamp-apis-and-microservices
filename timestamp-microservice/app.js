@@ -1,12 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const path = require('path')
 
 app = express();
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 })
+
+// Timestamp microservice
 
 app.get('/api/timestamp', (req, res) => {
     let date = new Date()
@@ -23,6 +24,18 @@ app.get('/api/timestamp/:date_string?', (req, res) => {
     }
 })
 
-const PORT = 3000
+// Request Header Parser
+
+app.get('/api/whoami', (req, res) => {
+  let reqData = req.connection.remoteAddress
+  let userLanguage = req.headers["accept-language"]
+  let userSystemInfo = req.headers["user-agent"]
+  
+  res.json({"ip adress" : reqData.substring(7),
+           "language" : userLanguage,
+           "software": userSystemInfo})
+})
+
+const PORT = 5500
 
 app.listen(PORT, ()=> console.log(`Server running at ${PORT}`));
