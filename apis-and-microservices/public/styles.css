@@ -30,3 +30,7 @@ h2 {
     width: 150px;
 }
 
+.row-container {
+    display:flex;
+}
+
