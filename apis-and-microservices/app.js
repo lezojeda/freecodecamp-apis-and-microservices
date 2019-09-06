@@ -25,6 +25,8 @@ app.use('/', reqHeaderParser)
 
 // URL shortener
 
+app.use('/', urlShortener)
+
 // app.use('/', urlShortener)
 
 const PORT = 5000
