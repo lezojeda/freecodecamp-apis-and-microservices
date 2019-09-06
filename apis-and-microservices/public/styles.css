@@ -34,3 +34,7 @@ h2 {
     display:flex;
 }
 
+input[type="submit"] {
+    cursor:pointer;
+}
+
