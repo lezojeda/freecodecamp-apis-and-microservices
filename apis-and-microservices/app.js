@@ -3,6 +3,22 @@ const bodyParser = require('body-parser')
 const timeparser = require('./timestamp.js')
 const reqHeaderParser = require('./req-header-parser.js')
 const urlShortener = require('./url-shortener.js')
+const mongoose = require('mongoose')
+
+// Connect to database
+mongoose.connect('mongodb+srv://lezojeda:winninggjob@cluster0-vjnrf.mongodb.net/fcc-apis-and-microservices?retryWrites=true&w=majority')
+
+let db = mongoose.connection
+
+// Check connection
+db.once('open', function(err) {
+    console.log('Connected to MongoDB')
+})
+
+// Check for db errors
+db.on('error', function(err) {
+    console.log(err)
+});
 
 let app = express();
 
