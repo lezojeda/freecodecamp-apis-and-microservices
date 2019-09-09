@@ -31,20 +31,20 @@ router.post('/api/shorturl/new', (req, res) => {
     let longurl = req.body.longurl.replace(remove_https, '').replace(remove_final_dash, '') //remove https and trailing /
 
     let longurl_processed = !contains_www.test(longurl) ? 'www.' + longurl : longurl //add www if not there
-    
+
     dns.lookup(longurl_processed, (err) => {
         if (err) {
             console.log(longurl_processed)
             return res.json({ "error": "invalid URL" })
         } else {
-            let random_short_url = Math.floor(Math.random()*500)
+            let random_short_url = Math.floor(Math.random() * 500)
 
             let url = new Url();
             url.long_url = req.body.longurl
             url.short_url = random_short_url
 
             url.save((err) => {
-                if(err) {
+                if (err) {
                     console.log(err)
                     return;
                 } else {
@@ -58,6 +58,20 @@ router.post('/api/shorturl/new', (req, res) => {
                 }
             })
 
+        }
+    })
+})
+
+// Redirect when short url GET request
+
+router.get('/api/shorturl/:shorturl', (req, res) => {
+    Url.findOne({ short_url: req.params.shorturl }, (err, doc) => {
+        if (err) {
+            res.send("Some error happened, sorry mate")
+        } else if (doc == null){
+            res.send("No such short url in the database")
+        } else {
+            res.redirect(doc.long_url)        
         }
     })
 })
