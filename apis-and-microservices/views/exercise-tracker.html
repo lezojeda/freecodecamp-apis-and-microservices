@@ -12,9 +12,10 @@
 
 <body>
     <h1>Exercise Tracker</h1>
-    <form>
+    <form method="POST" action='/api/exercise/new-user'>
         <label for="new-user">Create new user</label>
         <input id="new-user" type="text" name="username" placeholder="username">
+        <input type="submit" value="Submit new user">
     </form>
 </body>
 
