@@ -32,6 +32,12 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 })
 
+// Exercise tracker
+
+app.get('/exercise-tracker', (req, res) => {
+    res.sendFile(__dirname + '/views/exercise-tracker.html')
+})
+
 // Timestamp microservice
 app.use('/', timeparser)
 
