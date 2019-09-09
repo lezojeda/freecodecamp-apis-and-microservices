@@ -87,4 +87,16 @@ router.post('/api/exercise/add', (req, res) => {
     })
 })
 
+// GET users's exercise log
+
+router.get('/api/exercise/log', (req, res) => {
+    Exercise.find({username: req.query.username}, (err, doc) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(doc)
+        }
+    }).limit(parseInt(req.query.limit))
+})
+
 module.exports = router;
