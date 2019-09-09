@@ -16,7 +16,7 @@ let urlSchema = mongoose.Schema({
     }
 })
 
-let Url = mongoose.model('URL', urlSchema, 'url-shortener')
+let Url = mongoose.model('URL', urlSchema, 'url-shortener') //ultimo parametro la coleccion donde guardar
 
 // Routes
 router.use(bodyParser.urlencoded({ extended: false }))
@@ -26,26 +26,32 @@ router.use(bodyParser.json())
 router.post('/api/shorturl/new', (req, res) => {
     const remove_https = /(^http(s)?:\/\/)/i
     const remove_final_dash = /(\/)$/
-    const longurl = req.body.longurl.replace(remove_https, '').replace(remove_final_dash, '')
+    const contains_www = /^(w){3}\./g
+
+    let longurl = req.body.longurl.replace(remove_https, '').replace(remove_final_dash, '') //remove https and trailing /
+
+    let longurl_processed = !contains_www.test(longurl) ? 'www.' + longurl : longurl //add www if not there
     
-    dns.lookup(longurl, (err) => {
+    dns.lookup(longurl_processed, (err) => {
         if (err) {
-            console.log(longurl)
+            console.log(longurl_processed)
             return res.json({ "error": "invalid URL" })
         } else {
+            let random_short_url = Math.floor(Math.random()*500)
+
             let url = new Url();
             url.long_url = req.body.longurl
-            url.short_url = req.body.longurl
+            url.short_url = random_short_url
 
             url.save((err) => {
                 if(err) {
                     console.log(err)
                     return;
                 } else {
-                    console.log("url added")
+                    console.log("Shortened URL in database")
                     res.json({
-                        "long_url (requested)": req.body.longurl,
-                        "short_url": req.body.longurl
+                        "long_url (requested)": longurl_processed,
+                        "short_url": random_short_url
                     })
                     return;
 
