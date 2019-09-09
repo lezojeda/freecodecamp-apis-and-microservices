@@ -4,7 +4,8 @@ const bodyParser = require('body-parser')
 
 const mongoose = require('mongoose')
 
-// URL schema
+// Create New User
+
 let userSchema = mongoose.Schema({
     userName: {
         type: String,
@@ -29,6 +30,12 @@ router.post('/api/exercise/new-user', (req, res) => {
         }
     })
 
+})
+
+// Add exercises
+
+router.post('/api/exercise/add', (req, res) => {
+    res.send("hi there")
 })
 
 module.exports = router;

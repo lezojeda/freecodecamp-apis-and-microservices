@@ -12,11 +12,38 @@
 
 <body>
     <h1>Exercise Tracker</h1>
-    <form method="POST" action='/api/exercise/new-user'>
-        <label for="new-user">Create new user</label>
-        <input id="new-user" type="text" name="username" placeholder="username">
-        <input type="submit" value="Submit new user">
-    </form>
+    <div id="new-user" class="form-container">
+        <form method="POST" action='/api/exercise/new-user'>
+            <label for="new-user">Create new user</label>
+            <input id="new-user" type="text" name="username" placeholder="username">
+            <input type="submit" value="Submit new user">
+        </form>
+    </div>
+
+    <div id="add-exercise" class="form-container">
+        <form method="POST" action='/api/exercise/add'>
+            <div class="form-element">
+                <label for="username">Username: </label>
+                <input id="username" type="text" placeholder="username" name="username*">
+            </div>
+
+            <div class="form-element">
+                <label for="description">Description: </label>
+                <input id="description" type="text" placeholder="description" name="description*">
+            </div>
+
+            <div class="form-element">
+                <label for="duration">Duration: </label>
+                <input id="duration" type="text" placeholder="duration* (mins.)" name="duration">
+            </div>
+
+            <div class="form-element">
+                <label for="date">Date: </label>
+                <input id="date" type="text" placeholder="date (yyyy-mm-dd)" name="date">
+            </div>
+            <input type="submit" value="Submit new exercise">
+        </form>
+    </div>
 </body>
 
 </html>
