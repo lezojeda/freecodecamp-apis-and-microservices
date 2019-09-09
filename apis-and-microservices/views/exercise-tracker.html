@@ -12,6 +12,7 @@
 
 <body>
     <h1>Exercise Tracker</h1>
+    <h2>Create new user</h2>
     <div id="new-user" class="form-container">
         <form method="POST" action='/api/exercise/new-user'>
             <label for="new-user">Create new user</label>
@@ -20,6 +21,7 @@
         </form>
     </div>
 
+    <h2>Add exercise (must enter an existing username)</h2>
     <div id="add-exercise" class="form-container">
         <form method="POST" action='/api/exercise/add'>
             <div class="form-element">
@@ -42,6 +44,29 @@
                 <input id="date" type="text" placeholder="date (yyyy-mm-dd)" name="date">
             </div>
             <input type="submit" value="Submit new exercise">
+        </form>
+    </div>
+
+    <h2>Get exercise logs</h2>
+    <div id="get-exercise-logs" class="form-container">
+        <form method="GET" action="/api/exercise/log">
+            <div class="form-element">
+                <label for="get-username">Username*: </label>
+                <input id="get-username" type="text" name="username">
+            </div>
+            <div class="form-element">
+                <label for="from">From: </label>
+                <input id="from" type="text" name="from">
+            </div>
+            <div class="form-element">
+                <label for="to">To: </label>
+                <input id="to" type="text" name="to">
+            </div>
+            <div class="form-element">
+                <label for="limit">Number of logs: </label>
+                <input for="limit" type="number" name="limit">
+            </div>
+            <input type="submit" value="Get logs">
         </form>
     </div>
 </body>
