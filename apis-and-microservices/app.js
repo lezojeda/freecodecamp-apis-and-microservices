@@ -1,9 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+
 const timeparser = require('./timestamp.js')
 const reqHeaderParser = require('./req-header-parser.js')
 const urlShortener = require('./url-shortener.js')
-const mongoose = require('mongoose')
+const exerciseTracker = require('./exercise-tracker.js')
 
 // Connect to database
 mongoose.connect('mongodb+srv://lezojeda:winninggjob@cluster0-vjnrf.mongodb.net/fcc-apis-and-microservices?retryWrites=true&w=majority')
@@ -22,7 +24,7 @@ db.on('error', function(err) {
 
 let app = express();
 
-// Serve static assets please and get me that sweet CSS OH GOD
+// Serve static assets please and get me that sweet CSS
 
 app.use(express.static(__dirname + '/public'))
 
@@ -49,7 +51,9 @@ app.use('/', reqHeaderParser)
 
 app.use('/', urlShortener)
 
-// app.use('/', urlShortener)
+// Exercise tracker
+
+app.use('/', exerciseTracker)
 
 const PORT = 5000
 
