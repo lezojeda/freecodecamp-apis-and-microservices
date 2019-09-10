@@ -18,15 +18,15 @@
         <a href='/api/timestamp'>
             <button class='service-button'>Get date</button>
         </a>
-        <!--
-            I'll make this work eventually 
-            <form method="GET", action = "/api/timestamp" + >
-                <input type="number" name="year" value="1970" min="1970" max="2100">
-                <input type="number" name="month" value="1" min="1" max="12">
-                <input type="number" name="day" value="1" min="1" max="31">
-                <input type="submit" value="Get date in UNIX and UTC">
-            </form>
-        -->
+
+
+        <form method="GET" , action="/api/timestamp" +>
+            <input type="number" name="year" value="1970" min="1970" max="2100">
+            <input type="number" name="month" value="1" min="1" max="12">
+            <input type="number" name="day" value="1" min="1" max="31">
+            <input type="submit" value="Get date in UNIX and UTC">
+        </form>
+
     </div>
     <div class="project-container">
         <h2>Request Header Parser</h2>
@@ -39,8 +39,8 @@
         <div class="row-container">
             URL to be shortened:
             <form method="POST" action="/api/shorturl/new">
-                <input type="text" name="longurl"/>
-                <input type="submit" value="Shorten URL"/>
+                <input type="text" name="longurl" />
+                <input type="submit" value="Shorten URL" />
             </form>
         </div>
     </div>
