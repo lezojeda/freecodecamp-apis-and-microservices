@@ -1,7 +1,5 @@
 const express = require('express')
-const router = express.Router()
-const bodyParser = require('body-parser')
-
+const router = express.Router() //Router instance
 const mongoose = require('mongoose')
 
 // Create New User
@@ -16,17 +14,25 @@ let userSchema = mongoose.Schema({
 let User = mongoose.model('user', userSchema, 'users') // Compile schema into model
 
 router.post('/api/exercise/new-user', (req, res) => {
-    // create new user document
-    let user = new User();
-    user.username = req.body.username
-
-    user.save((err) => {
+    User.findOne({ username: req.body.username }, (err, doc) => {
         if (err) {
             console.log(err)
-            return;
-        } else {
-            console.log('New user created')
-            res.sendFile(__dirname + '/views/user-created.html')
+        } else if (doc !== null) {
+            res.send("Username already taken")
+        } else { // create new user document
+            let user = new User();
+            user.username = req.body.username
+
+            user.save((err) => {
+                if (err) {
+                    console.log(err)
+                    return;
+                } else {
+                    console.log('New user created')
+                    res.sendFile(__dirname + '/views/user-created.html')
+                }
+            })
+
         }
     })
 
@@ -87,11 +93,12 @@ router.post('/api/exercise/add', (req, res) => {
     })
 })
 
-// GET users's exercise log
+// Get users's exercise log
 
 router.get('/api/exercise/log', (req, res) => {
-    Exercise.find({username: req.query.username}, (err, doc) => {
-        if(err) {
+    Exercise.find({ username: req.query.username,
+                    date: {"$gte" : req.query.from, "$lt" : req.query.to} }, (err, doc) => {
+        if (err) {
             console.log(err)
         } else {
             res.send(doc)

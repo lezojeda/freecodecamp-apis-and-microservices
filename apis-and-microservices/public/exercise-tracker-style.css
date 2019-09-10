@@ -19,6 +19,8 @@ h2 {
 }
 
 .form-container {
+    display:flex;
+    flex-direction: column;
     border: 2px solid rgb(58, 54, 54);
     border-radius: 3px;
     margin-bottom: 20px;
