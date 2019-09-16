@@ -87,9 +87,6 @@ button, input[type="submit"] {
     font-family: 'Open Sans', sans-serif;
     border: 1px #CFAA63 solid;
     transition: 0.2s;
-}
-
-button {
     border-radius: 5%;
 }
 
