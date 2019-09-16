@@ -1,0 +1,23 @@
+body {
+    background: lightblue;
+    font-family: 'Crimson Pro', serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+}
+
+a {
+    font-size: 1.5em;
+}
+
+a:hover {
+    text-decoration:none;
+}

@@ -18,6 +18,10 @@ h2 {
     font-weight: 400;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .form-container {
     display:flex;
     flex-direction: column;
