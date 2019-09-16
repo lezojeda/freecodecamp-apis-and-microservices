@@ -7,35 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>APIs and Microservices</title>
     <link rel="stylesheet" href="index-style.css">
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400,700|Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3431e6ad2c.js"></script>
 </head>
 
 <body>
     <header>
         <h1>APIs and Microservices Projects from FreeCodeCamp</h1>
-        <hr/>
+        <hr />
     </header>
 
     <div class="project-container" id="timestamp">
-        <h2>Timestamp microservice</h2>
-        <a href='/api/timestamp'>
-            <button class='service-button'>Get date</button>
-        </a>
-
-
-        <form method="GET" , action="/api/timestamp" +>
-            <input type="number" name="year" value="1970" min="1970" max="2100">
-            <input type="number" name="month" value="1" min="1" max="12">
-            <input type="number" name="day" value="1" min="1" max="31">
-            <input type="submit" value="Get date in UNIX and UTC">
-        </form>
-
+        <h2>Timestamp microservice<i id="display-button" class="fas fa-chevron-circle-down fa-xs"></i></h2>
+        <div id='project' class='container'>
+            <a href='/api/timestamp'>
+                <button class='service-button'>Get date</button>
+            </a>
+    
+            <form method="GET" , action="/api/timestamp" +>
+                <input type="number" name="year" value="1970" min="1970" max="2100">
+                <input type="number" name="month" value="1" min="1" max="12">
+                <input type="number" name="day" value="1" min="1" max="31">
+                <input type="submit" value="Get date in UNIX and UTC">
+            </form>
+        </div>
     </div>
     <div class="project-container" id="request-header-parser">
-        <h2>Request Header Parser</h2>
-        <a href='/api/whoami'>
-            <button class='service-button'>Who am I?</button>
-        </a>
+        <h2>Request Header Parser<i id="display-button" class="fas fa-chevron-circle-down fa-xs"></i></h2>
+        <div class="row-container">
+            <a href='/api/whoami'>
+                <button class='service-button'>Who am I?</button>
+            </a>
+        </div>
     </div>
     <div class="project-container" id="url-shortener">
         <h2>URL shortener</h2>
@@ -51,19 +54,21 @@
         <h2>Exercise Tracker</h2>
         <a class="medium-link" href="/exercise-tracker">Go to project page</a>
     </div>
-    <div class="project-container">
+    <div class="project-container" id="file-metadata">
         <h2>File Metadata</h2>
-        <p>
-          Upload a file
-        </p>
+        <h3>
+            Upload a file
+        </h3>
         <div class="row-container">
-          <h4 id="output"></h4>
-          <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
-            <input id="inputfield" type="file" name="upfile">
-            <input id="button" type="submit" value="Upload">
-          </form>
+            <h4 id="output"></h4>
+            <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
+                <input id="inputfield" type="file" name="upfile">
+                <input id="button" type="submit" value="Upload">
+            </form>
         </div>
     </div>
+    <script type='text/javascript
+    ' src='expand-project.js'></script>
 </body>
 
 </html>
