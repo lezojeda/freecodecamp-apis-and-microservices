@@ -29,7 +29,7 @@ router.post('/api/exercise/new-user', (req, res) => {
                     return;
                 } else {
                     console.log('New user created')
-                    res.sendFile(__dirname + '/views/user-created.html')
+                    res.sendFile('/views/user-created.html', {'root': '../apis-and-microservices'})
                 }
             })
 
@@ -107,8 +107,9 @@ router.get('/api/exercise/log', (req, res) => {
     Exercise.find(query, (err, doc) => {
         if (err) {
             console.log(err)
-        } else if (!doc.length) {
-            res.sendFile(__dirname + '/views/exercise-not-found.html')
+        } else if (!doc.length || doc === null) {
+            console.log("asd")
+            res.sendFile('/views/exercise-not-found.html', {'root': '../apis-and-microservices'})
         } else {
             res.send(doc)
 
