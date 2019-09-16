@@ -2,13 +2,13 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-const timeparser = require('./timestamp.js')
-const reqHeaderParser = require('./req-header-parser.js')
-const urlShortener = require('./url-shortener.js')
-const exerciseTracker = require('./exercise-tracker.js')
+const timeparser = require('./routes/timestamp.js')
+const reqHeaderParser = require('./routes/req-header-parser.js')
+const urlShortener = require('./routes/url-shortener.js')
+const exerciseTracker = require('./routes/exercise-tracker.js')
 
 // Connect to database
-mongoose.connect('mongodb+srv://lezojeda:winninggjob@cluster0-vjnrf.mongodb.net/fcc-apis-and-microservices?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://lezojeda:TCojYiuBTQdM9SsP@cluster0-vjnrf.mongodb.net/fcc-apis-and-microservices?retryWrites=true&w=majority')
 
 let db = mongoose.connection
 
@@ -18,13 +18,13 @@ db.once('open', function(err) {
 })
 
 // Check for db errors
-db.on('error', function(err) {
+db.on(' error', function(err) {
     console.log(err)
 });
 
 let app = express();
 
-// Serve static assets please and get me that sweet CSS
+// Serve static assets
 
 app.use(express.static(__dirname + '/public'))
 
@@ -54,6 +54,10 @@ app.use('/', urlShortener)
 // Exercise tracker
 
 app.use('/', exerciseTracker)
+
+app.use(function (err, req, res, next) {
+    res.status(404).sendFile(__dirname + '/views/404.html')
+  })
 
 const PORT = 5000
 

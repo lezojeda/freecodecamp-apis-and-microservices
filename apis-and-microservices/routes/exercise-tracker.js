@@ -96,12 +96,22 @@ router.post('/api/exercise/add', (req, res) => {
 // Get users's exercise log
 
 router.get('/api/exercise/log', (req, res) => {
-    Exercise.find({ username: req.query.username,
-                    date: {"$gte" : req.query.from, "$lt" : req.query.to} }, (err, doc) => {
+    let query = {
+        username: req.query.username,
+        date: {
+            "$gte": req.query.from ? req.query.from : '1970',
+            "$lt": req.query.to ? req.query.to : '2100'
+        }
+    };
+
+    Exercise.find(query, (err, doc) => {
         if (err) {
             console.log(err)
+        } else if (!doc.length) {
+            res.sendFile(__dirname + '/views/exercise-not-found.html')
         } else {
             res.send(doc)
+
         }
     }).limit(parseInt(req.query.limit))
 })

@@ -48,6 +48,19 @@
         <h2>Exercise Tracker</h2>
         <a href="/exercise-tracker">Go to project page</a>
     </div>
+    <div class="project-container">
+        <h2>File Metadata</h2>
+        <p>
+          Upload a file
+        </p>
+        <div class="row-container">
+          <h4 id="output"></h4>
+          <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
+            <input id="inputfield" type="file" name="upfile">
+            <input id="button" type="submit" value="Upload">
+          </form>
+        </div>
+    </div>
 </body>
 
 </html>
