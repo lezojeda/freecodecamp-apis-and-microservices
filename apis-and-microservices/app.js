@@ -6,6 +6,7 @@ const timeparser = require('./routes/timestamp.js')
 const reqHeaderParser = require('./routes/req-header-parser.js')
 const urlShortener = require('./routes/url-shortener.js')
 const exerciseTracker = require('./routes/exercise-tracker.js')
+const fileMetadata = require('./routes/file-metadata.js')
 
 // Connect to database
 mongoose.connect('mongodb+srv://lezojeda:TCojYiuBTQdM9SsP@cluster0-vjnrf.mongodb.net/fcc-apis-and-microservices?retryWrites=true&w=majority')
@@ -44,16 +45,16 @@ app.get('/exercise-tracker', (req, res) => {
 app.use('/', timeparser)
 
 // Request Header Parser
-
 app.use('/', reqHeaderParser)
 
 // URL shortener
-
 app.use('/', urlShortener)
 
 // Exercise tracker
-
 app.use('/', exerciseTracker)
+
+// File metadata
+app.use('/', fileMetadata)
 
 app.use(function (err, req, res, next) {
     res.status(404).sendFile(__dirname + '/views/404.html')
