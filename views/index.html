@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>APIs and Microservices</title>
     <link rel="stylesheet" href="index-style.css">
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400,700|Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo|Source+Sans+Pro&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3431e6ad2c.js"></script>
 </head>
 
@@ -21,13 +21,16 @@
         <div id='main-content'>
             <!-- TIMESTAMP -->
             <div class="project-container" id="timestamp">
-                <h2>Timestamp microservice <i title="Display/hide content" id="display-button" class="fas fa-chevron-circle-down fa-xs"></i></h2>
+                <h2>Timestamp microservice <i title="Display/hide content" id="display-button"
+                        class="fas fa-chevron-circle-down fa-xs"></i></h2>
                 <div id='project' class='container' style="display:none;">
+                    <p>Below you can click the "Get today's date" button to get a JSON object of it on UNIX and UTC
+                        format. Then you can get any date from 1970 to 2100 in those formats as well.</p>
                     <a href='/api/timestamp'>
-                        <button class='service-button'>Get date</button>
+                        <button class='service-button'>Get today's date</button>
                     </a>
-            
-                    <form method="GET" , action="/api/timestamp" +>
+
+                    <form id="timestamp-form" method="GET" , action="/api/timestamp" +>
                         <input type="number" name="year" value="1970" min="1970" max="2100">
                         <input type="number" name="month" value="1" min="1" max="12">
                         <input type="number" name="day" value="1" min="1" max="31">
@@ -35,44 +38,59 @@
                     </form>
                 </div>
             </div>
-        
+
             <!-- REQUEST HEADER PARSER -->
             <div class="project-container" id="request-header-parser">
-                <h2>Request Header Parser <i title="Display/hide content" id="display-button" class="fas fa-chevron-circle-down fa-xs"></i></h2>
-                <div class="row-container" style="display:none;">
+                <h2>Request Header Parser <i title="Display/hide content" id="display-button"
+                        class="fas fa-chevron-circle-down fa-xs"></i></h2>
+                <div class="container" style="display:none;">
+                    <p>The button below responds with a JSON object with the user's ip address as well as the language
+                        and software used to browse.</p>
                     <a href='/api/whoami'>
                         <button class='service-button'>Who am I?</button>
                     </a>
                 </div>
             </div>
-        
+
             <!-- URL SHORTENER -->
             <div class="project-container" id="url-shortener">
-                <h2>URL shortener <i title="Display/hide content" id="display-button" class="fas fa-chevron-circle-down fa-xs"></i></h2>
-                <div class="row-container" style="display:none;">
-                    URL to be shortened:
-                    <form method="POST" action="/api/shorturl/new">
-                        <input type="text" name="longurl" />
-                        <input type="submit" value="Shorten URL" />
-                    </form>
+                <h2>URL shortener <i title="Display/hide content" id="display-button"
+                        class="fas fa-chevron-circle-down fa-xs"></i></h2>
+                <div class="container" style="display:none;">
+                    <p>The URL shortener asks for a URL and then returns a JSON object with a number. That number
+                        corresponds to the shortened URL, you can then use it as
+                        https://apis-microservices-lezojeda.glitch.me/<em>number</em> and be redirected to the original
+                        URL.</p>
+                    <div class="row-container">
+                        URL to be shortened:
+                        <form method="POST" action="/api/shorturl/new">
+                            <input type="text" name="longurl" />
+                            <input type="submit" value="Shorten URL" />
+                        </form>
+                    </div>
                 </div>
             </div>
-        
+
             <!-- EXERCISE TRACKER -->
             <div class="project-container" title="Display/hide content" id="exercise-tracker">
                 <h2>Exercise Tracker</h2>
                 <a class="medium-link" href="/exercise-tracker">Go to project page</a>
             </div>
-        
+
             <!-- FILE METADATA -->
             <div class="project-container" id="file-metadata">
-                <h2>File Metadata <i title="Display/hide content" id="display-button" class="fas fa-chevron-circle-down fa-xs"></i></h2>
-                <div class="row-container" style="display:none;">
-                    <h4 id="output"></h4>
-                    <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
-                        <input id="inputfield" type="file" name="upfile">
-                        <input id="button" type="submit" value="Upload">
-                    </form>
+                <h2>File Metadata <i title="Display/hide content" id="display-button"
+                        class="fas fa-chevron-circle-down fa-xs"></i></h2>
+                <div class="container" style="display:none;">
+                    <p>Upload a file and obtain its size (in bytes), type and name.</p>
+                    <div class="row-container">
+                        <h4 id="output"></h4>
+                        <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
+                            <input id="inputfield" type="file" name="upfile">
+                            <input id="button" type="submit" value="Upload">
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>
