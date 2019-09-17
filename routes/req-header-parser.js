@@ -6,7 +6,7 @@ router.get('/api/whoami', (req, res) => {
     let userLanguage = req.headers["accept-language"]
     let userSystemInfo = req.headers["user-agent"]
     
-    res.json({"ip adress" : reqData.substring(7),
+    res.json({"ip address" : reqData.substring(7),
              "language" : userLanguage,
              "software": userSystemInfo})
   })
