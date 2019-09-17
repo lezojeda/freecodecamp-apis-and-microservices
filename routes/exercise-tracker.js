@@ -1,6 +1,7 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router() //Router instance
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const path = require('path');
 
 // Create New User
 
@@ -29,7 +30,7 @@ router.post('/api/exercise/new-user', (req, res) => {
                     return;
                 } else {
                     console.log('New user created')
-                    res.sendFile('/views/user-created.html', {'root': '../apis-and-microservices'})
+                    res.sendFile('user-created.html', { root: path.join(__dirname, '../views') })
                 }
             })
 
