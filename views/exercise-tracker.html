@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Exercise Tracker</title>
     <link rel="stylesheet" href="exercise-tracker-style.css">
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo|Source+Sans+Pro&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
@@ -15,7 +15,7 @@
     <h2>Create new user</h2>
     <div id="new-user" class="form-container">
         <form method="POST" action='/api/exercise/new-user'>
-            <label for="new-user">Create new user</label>
+            <label for="new-user"></label>
             <input id="new-user" type="text" name="username" placeholder="username">
             <input type="submit" value="Submit new user">
         </form>
@@ -36,7 +36,7 @@
 
             <div class="form-element">
                 <label for="duration">Duration*: </label>
-                <input id="duration" type="text" placeholder="duration* (mins.)" name="duration">
+                <input id="duration" type="" placeholder="duration* (mins.)" name="duration">
             </div>
 
             <div class="form-element">
@@ -52,11 +52,11 @@
         <form method="GET" action="/api/exercise/log">
             <div class="form-element">
                 <label for="get-username">Username* (case sensitive): </label>
-                <input id="get-username" type="text" name="username">
+                <input id="get-username" type="text" name="username" placeholder="username">
             </div>
             <div class="form-element">
                 <label for="from">From: </label>
-                <input id="from" type="text" name="from">
+                <input id="from" type="text" name="from" placeholder="yyyy-mm-dd">
             </div>
             <div class="form-element">
                 <label for="to">To: </label>
